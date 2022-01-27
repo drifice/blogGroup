@@ -1,1 +1,20 @@
-<p>signin works!</p>
+  <form [formGroup]="checkoutForm"   (ngSubmit)="onSubmit()">
+    
+    <div>
+      <label for="name"> Name :</label> <br>
+      <input id="name" type="text" formControlName="name"><br>
+    </div>
+  
+    <div>
+      <label for="email"> Email :</label><br>
+      <input id="email" type="text" formControlName="email"><br>
+    </div>
+
+    <div>
+        <label for="password">   Mot de passe :</label><br>
+        <input id="password" type="text" formControlName="password"><br>
+    </div>
+    <br>
+    <button class="button" type="submit" >Connecter</button>
+  
+  </form>
