@@ -1,0 +1,17 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { PublicRoutingModule } from './public-routing.module';
+import { SigninComponent } from './component/signin/signin.component';
+
+
+
+@NgModule({
+  declarations: [
+    SigninComponent
+  ],
+  imports: [
+    CommonModule,
+    PublicRoutingModule
+  ]
+})
+export class PublicModule { }
