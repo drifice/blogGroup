@@ -16,7 +16,7 @@ export class UserService {
     return this.http.get<IUser[]>('http://localhost:8080/utilisateurs')
   }
 
-  createUser(newUser: IUser): Observable<void> {
+  createUser(newUser: IUser): Observable<IUser> {
     return this.http.post<IUser>('http://localhost:8080/utilisateurs', newUser);
   }
 
