@@ -1,5 +1,6 @@
 import { ICategorie } from "./categorie.model";
 import { ITag } from "./tag.model";
+import { IUser } from "./user.model";
 
 export interface IArticle {
     titre :string,
@@ -7,8 +8,8 @@ export interface IArticle {
     description :string,
     dateDeCreation :Date,
     contenu :string,
-    auteur : string,
-    imageDePrésentation: string,
+    auteur : IUser,
+    imageDePresentation: string,
     categorie: ICategorie,
     listeDeTag: ITag[]
 }

@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './component/signin/signin.component';
+import { ArticleComponent } from './component/article/article.component';
 
 
 const routes: Routes = [
   {
     path :'signin',
     component :SigninComponent,
+  },
+  {
+    path :'article',
+    component :ArticleComponent,
   }
 ];
 

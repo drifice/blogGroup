@@ -1,0 +1,63 @@
+<h2> Add Article</h2>
+<form [formGroup]="checkoutForm" (ngSubmit)="addArticle()">
+
+    <div>
+        <label for="titre"> titre :</label> <br>
+        <input id="titre" type="text" formControlName="titre"><br>
+    </div>
+
+    <div>
+        <label for="slug"> slug :</label><br>
+        <input id="slug" type="text" formControlName="slug"><br>
+    </div>
+
+    <div>
+        <label for="description"> description :</label><br>
+        <input id="description" type="text" formControlName="description"><br>
+    </div>
+
+    <div>
+        <label for="dateDeCreation"> date :</label><br>
+        <input id="dateDeCreation" type="text" formControlName="dateDeCreation"><br>
+    </div>
+
+    <div>
+        <label for="contenu"> contenu :</label> <br>
+        <input id="contenu" type="text" formControlName="contenu"><br>
+    </div>
+
+    <div>
+        <label for="auteur"> auteur :</label><br>
+        <input id="auteur" type="text" formControlName="auteur"><br>
+    </div>
+
+    <div>
+        <label for="imageDePresentation"> image de présentation:</label><br>
+        <input id="imageDePresentation" type="text" formControlName="imageDePresentation"><br>
+    </div>
+
+    <div>
+        <label for="categorie"> categorie :</label> <br>
+        <input id="categorie" type="text" formControlName="categorie"><br>
+    </div>
+
+    <div>
+        <label for="listeDeTag"> listeDeTag :</label><br>
+        <input id="listeDeTag" type="text" formControlName="listeDeTag"><br>
+    </div>
+    <button class="button" type="submit">Ajouter</button>
+</form>
+
+<h2> List Article</h2>
+
+<div *ngFor =" let article of articles"> 
+    {{ article.titre}} -
+    {{ article.slug}} -
+    {{ article.description}} -
+    {{ article.dateDeCreation}} - 
+    {{ article.contenu}} - 
+    {{ article.auteur}} - 
+    {{ article.auteur}} - 
+    {{ article.categorie}} - 
+    {{ article.listeDeTag }}
+</div>
