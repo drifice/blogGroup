@@ -1,9 +1,4 @@
 
-Commentaire :
-<div *ngFor =" let commentaire of commentaires"> 
-    {{ commentaire.contenu}} -
-    {{ commentaire.user}}
-</div>
 <h2> Add Commentaire</h2>
 <form [formGroup]="checkoutForm" (ngSubmit)="addComent()">
 
@@ -12,11 +7,17 @@ Commentaire :
         <input id="contenu" type="text" formControlName="contenu"><br>
     </div>
 
-    <div>
-        <label for="user"> user :</label><br>
-        <input id="user" type="text" formControlName="user"><br>
-    </div>
+<!--    <div>-->
+<!--        <label for="user"> user :</label><br>-->
+<!--        <input id="user" type="text" formControlName="user"><br>-->
+<!--    </div>-->
 
     <button class="button" type="submit">Ajouter</button>
 </form>
 
+<h2>Commentaires :</h2>
+
+<div *ngFor =" let commentaire of commentaires">
+  {{ commentaire.contenu}} -
+  {{ commentaire.utilisateur.username}}
+</div>
