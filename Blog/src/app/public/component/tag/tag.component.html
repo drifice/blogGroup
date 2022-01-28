@@ -1,9 +1,4 @@
 
-tags :
-<div *ngFor =" let tag of tags"> 
-    {{ tag.titre}} -
-    {{ tag.nbArticle}}
-</div>
 <h2> Add tag</h2>
 <form [formGroup]="checkoutForm" (ngSubmit)="addTag()">
 
@@ -13,10 +8,16 @@ tags :
     </div>
 
     <div>
-        <label for="nbArticle"> nb Article :</label><br>
-        <input id="nbArticle" type="text" formControlName="nbArticle"><br>
+        <label for="nombreArticle"> nb Article :</label><br>
+        <input id="nombreArticle" type="text" formControlName="nombreArticle"><br>
     </div>
 
     <button class="button" type="submit">Ajouter</button>
 </form>
 
+<h2> List Tags</h2>
+
+<div *ngFor =" let tag of tags">
+  {{ tag.titre}} -
+  {{ tag.nombreArticle}}
+</div>

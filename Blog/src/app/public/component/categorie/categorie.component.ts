@@ -12,7 +12,7 @@ export class CategorieComponent implements OnInit {
 
   checkoutForm = new FormGroup({
     titre: new FormControl(''),
-    nbArticle: new FormControl('')
+    nombreArticle: new FormControl('')
   });
   constructor() { }
 

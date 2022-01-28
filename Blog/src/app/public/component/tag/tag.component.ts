@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ITag } from 'src/app/core/models/tag.model';
+import {TagService} from "./tag.service";
 
 @Component({
   selector: 'app-tag',
@@ -12,11 +13,12 @@ export class TagComponent implements OnInit {
 
   checkoutForm = new FormGroup({
     titre: new FormControl(''),
-    nbArticle: new FormControl('')
+    nombreArticle: new FormControl('')
   });
-  constructor() { }
+  constructor(private tagService : TagService) { }
 
   ngOnInit(): void {
+    this.tagService.getTags().subscribe(value => this.tags = value);
   }
 
   addTag(){

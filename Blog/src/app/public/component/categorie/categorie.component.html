@@ -1,8 +1,8 @@
 
 categorie :
-<div *ngFor =" let categorie of categories"> 
+<div *ngFor =" let categorie of categories">
     {{ categorie.titre}} -
-    {{ categorie.nbArticle}}
+    {{ categorie.nombreArticle}}
 </div>
 <h2> Add categorie</h2>
 <form [formGroup]="checkoutForm" (ngSubmit)="addCategorie()">
@@ -13,8 +13,8 @@ categorie :
     </div>
 
     <div>
-        <label for="nbArticle"> nb Article :</label><br>
-        <input id="nbArticle" type="text" formControlName="nbArticle"><br>
+        <label for="nombreArticle"> nb Article :</label><br>
+        <input id="nombreArticle" type="text" formControlName="nombreArticle"><br>
     </div>
 
     <button class="button" type="submit">Ajouter</button>

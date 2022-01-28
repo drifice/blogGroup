@@ -8,7 +8,7 @@ import { IUser } from 'src/app/core/models/user.model';
   styleUrls: ['./adduser.component.scss']
 })
 export class AdduserComponent implements OnInit {
-  public user :IUser ={ 
+  public user :IUser ={
     username :"",
     password :"",
     email :""
@@ -16,7 +16,7 @@ export class AdduserComponent implements OnInit {
 
   checkoutForm = new FormGroup({
     titre: new FormControl(''),
-    nbArticle: new FormControl('')
+    nombreArticle: new FormControl('')
   });
   constructor() { }
 
