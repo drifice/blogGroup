@@ -1,21 +1,24 @@
-<h2> Add tag</h2>
+<div class="cart">
+    
+<h2> Add User</h2>
 <form [formGroup]="addUserForm" (ngSubmit)="addUser()">
 
     <div>
-        <label for="username"> username :</label> <br>
+        <label for="username"> Username :</label> <br>
         <input id="username" type="text" formControlName="username"><br>
     </div>
 
     <div>
-        <label for="password"> password:</label><br>
+        <label for="password"> Password:</label><br>
         <input id="password" type="text" formControlName="password"><br>
     </div>
 
     <div>
-        <label for="email"> email:</label><br>
+        <label for="email"> Email:</label><br>
         <input id="email" type="text" formControlName="email"><br>
     </div>
 
     <button class="button" type="submit">Ajouter</button>
 </form>
 
+</div>
