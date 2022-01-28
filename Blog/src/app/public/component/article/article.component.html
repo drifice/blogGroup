@@ -38,26 +38,35 @@
 
     <div>
         <label for="categorie"> categorie :</label> <br>
-        <input id="categorie" type="text" formControlName="categorie"><br>
+        <select id="categorie" class="form-control"  name="selectAnswer" formControlName="categoryId">
+          <option *ngFor="let categorie of categories" [ngValue]="categorie.id">{{categorie.titre}}</option>
+        </select>
     </div>
 
     <div>
-        <label for="listeDeTag"> listeDeTag :</label><br>
-        <input id="listeDeTag" type="text" formControlName="listeDeTag"><br>
+        <label > listeDeTag :</label><br>
+<!--        <input id="listeDeTag" type="text" formControlName="listeDeTag"><br>-->
+
+        <div *ngFor="let tag of tags; let i=index">
+          <label>
+            <input type="checkbox" [value]="tag.id" formControlName="tagIds" (change)="onTagChange($event)" />
+            {{tag.titre}}
+          </label>
+        </div>
     </div>
     <button class="button" type="submit">Ajouter</button>
 </form>
 
 <h2> List Article</h2>
 
-<div *ngFor =" let article of articles"> 
+<div *ngFor =" let article of articles">
     {{ article.titre}} -
     {{ article.slug}} -
     {{ article.description}} -
-    {{ article.dateDeCreation}} - 
-    {{ article.contenu}} - 
-    {{ article.auteur}} - 
-    {{ article.auteur}} - 
-    {{ article.categorie}} - 
-    {{ article.listeDeTag }}
+    {{ article.dateDeCreation}} -
+    {{ article.contenu}} -
+    {{ article.auteur.username}} -
+    {{ article.categorie.titre}} -
+    <span *ngFor="let tag of article.tags"> {{ tag.titre }} |</span>
+    <span class="clickable" (click)="deleteArticle(article.id)">Suppimer</span>
 </div>

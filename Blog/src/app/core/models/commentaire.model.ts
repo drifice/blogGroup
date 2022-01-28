@@ -1,6 +1,8 @@
-import { IUser } from "./user.model";
+import {IUser} from "./user.model";
 
-export interface ICommentaire { 
-    contenu :string,
-    user: IUser
+export interface ICommentaire {
+  id: string,
+  contenu: string,
+  utilisateurId: string,
+  utilisateur: IUser
 }
