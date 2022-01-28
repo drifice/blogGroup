@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { IUser } from 'src/app/core/models/user.model';
 
 @Component({
@@ -8,6 +10,8 @@ import { IUser } from 'src/app/core/models/user.model';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+
+  private baseURL = "http://localhost:8080/connexion";
 
   public user: IUser = {
     username : "admin",
@@ -22,7 +26,8 @@ export class SigninComponent implements OnInit {
   });
   
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private httpClient: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +42,10 @@ export class SigninComponent implements OnInit {
       } else {
         console.log("out");
       }
+  }
+
+  connect(user: IUser): Observable<IUser>{
+    return this.httpClient.post<IUser>(`${this.baseURL}`, user);
   }
 
 }
