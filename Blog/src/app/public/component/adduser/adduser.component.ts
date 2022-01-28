@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IUser } from 'src/app/core/models/user.model';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-adduser',
@@ -8,25 +9,28 @@ import { IUser } from 'src/app/core/models/user.model';
   styleUrls: ['./adduser.component.scss']
 })
 export class AdduserComponent implements OnInit {
-  public user :IUser ={
-    username :"",
-    password :"",
-    email :""
-};
+  public user :IUser[] =[];
 
   checkoutForm = new FormGroup({
-    titre: new FormControl(''),
-    nombreArticle: new FormControl('')
+    username: new FormControl(''),
+    password: new FormControl(''),
+    email: new FormControl('')
   });
-  constructor() { }
+  constructor(private userservice : UserService) { }
 
   ngOnInit(): void {
+    this.userservice.getUsers().subscribe(value => this.user = value);
   }
 
   addUser(){
     if(this.checkoutForm.value.username != '') {
-      this.user =this.checkoutForm.value;
+      const newUser = this.checkoutForm.value as IUser;
+      this.userservice.createUser(newUser).subscribe();
+      this.user.push(this.checkoutForm.value);
+      this.seeUser();
     }
-    console.log(this.user)
+  }
+  seeUser() {
+    this.userservice.getUsers().subscribe(value => console.log(value));
   }
 }
