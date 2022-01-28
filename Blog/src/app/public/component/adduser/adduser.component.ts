@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IUser } from 'src/app/core/models/user.model';
+import {TagService} from "../tag/tag.service";
+import {UserService} from "./user.service";
 
 @Component({
   selector: 'app-adduser',
@@ -8,25 +10,22 @@ import { IUser } from 'src/app/core/models/user.model';
   styleUrls: ['./adduser.component.scss']
 })
 export class AdduserComponent implements OnInit {
-  public user :IUser ={
-    username :"",
-    password :"",
-    email :""
-};
 
-  checkoutForm = new FormGroup({
-    titre: new FormControl(''),
-    nombreArticle: new FormControl('')
+
+  addUserForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl(''),
+    email: new FormControl('')
   });
-  constructor() { }
+  constructor(private userService : UserService) { }
 
   ngOnInit(): void {
   }
 
   addUser(){
-    if(this.checkoutForm.value.username != '') {
-      this.user =this.checkoutForm.value;
+    if(this.addUserForm.value.username != '') {
+      const newUser =this.addUserForm.value as IUser;
+      this.userService.createUser(newUser).subscribe();
     }
-    console.log(this.user)
   }
 }

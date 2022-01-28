@@ -14,6 +14,7 @@ export class SigninComponent implements OnInit {
   private baseURL = "http://localhost:8080/connexion";
 
   public user: IUser = {
+    id: "",
     username : "admin",
     password : "admin",
     email : "admin"
@@ -24,7 +25,7 @@ export class SigninComponent implements OnInit {
     email: new FormControl(''),
     password : new FormControl(''),
   });
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private httpClient: HttpClient
@@ -36,7 +37,7 @@ export class SigninComponent implements OnInit {
   onSubmit () {
     if (this.checkoutForm.value.name == this.user.username &&
       this.checkoutForm.value.email == this.user.email &&
-      this.checkoutForm.value.password == this.user.password 
+      this.checkoutForm.value.password == this.user.password
       ) {
         console.log("connecter");
       } else {
