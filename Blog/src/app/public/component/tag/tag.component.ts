@@ -24,8 +24,8 @@ export class TagComponent implements OnInit {
   addTag(){
     if(this.checkoutForm.value.titre != '') {
       const newTag = this.checkoutForm.value as ITag;
-      this.tagService.createTag(newTag).subscribe();
-      this.tags.push(this.checkoutForm.value);
+      this.tagService.createTag(newTag)
+        .subscribe(value => this.tags.push(value));
     }
     console.log(this.tags)
   }

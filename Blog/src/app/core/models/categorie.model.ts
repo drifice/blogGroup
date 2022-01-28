@@ -1,4 +1,5 @@
 export interface ICategorie {
-    titre :string,
-  nombreArticle :number
+  id: string,
+  titre: string,
+  nombreArticle: number
 }

@@ -8,14 +8,16 @@ import { IUser } from 'src/app/core/models/user.model';
 })
 export class UserService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+
+  }
 
   getUsers() {
     return this.http.get<IUser[]>('http://localhost:8080/utilisateurs')
   }
 
-  createUser(newTag: IUser): Observable<void> {
-    return this.http.post<void>('http://localhost:8080/utilisateurs', newTag);
+  createUser(newUser: IUser): Observable<void> {
+    return this.http.post<IUser>('http://localhost:8080/utilisateurs', newUser);
   }
 
   deleteUser(id: string): Observable<void> {
