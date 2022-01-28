@@ -1,9 +1,4 @@
 
-categorie :
-<div *ngFor =" let categorie of categories">
-    {{ categorie.titre}} -
-    {{ categorie.nombreArticle}}
-</div>
 <h2> Add categorie</h2>
 <form [formGroup]="checkoutForm" (ngSubmit)="addCategorie()">
 
@@ -19,3 +14,13 @@ categorie :
 
     <button class="button" type="submit">Ajouter</button>
 </form>
+
+
+
+<h2>categorie :</h2>
+
+<div *ngFor =" let categorie of categories">
+  {{ categorie.titre}} -
+  {{ categorie.nombreArticle}}
+  <span class="clickable" (click)="deleteCategorie(categorie.id)">Suppimer</span>
+</div>

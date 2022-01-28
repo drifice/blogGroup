@@ -14,8 +14,8 @@ export class TagService {
     return this.http.get<ITag[]>('http://localhost:8080/tags')
   }
 
-  createTag(newTag: ITag): Observable<void> {
-    return this.http.post<void>('http://localhost:8080/tags', newTag);
+  createTag(newTag: ITag): Observable<ITag> {
+    return this.http.post<ITag>('http://localhost:8080/tags', newTag);
   }
 
   deleteTag(id: string): Observable<void> {
