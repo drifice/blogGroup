@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { IUser } from 'src/app/core/models/user.model';
+import { SigninService } from './signin.service';
 
 @Component({
   selector: 'app-signin',
@@ -10,8 +10,6 @@ import { IUser } from 'src/app/core/models/user.model';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-
-  private baseURL = "http://localhost:8080/connexion";
 
   public user: IUser = {
     id: "",
@@ -28,25 +26,30 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private signinService: SigninService
   ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit () {
-    if (this.checkoutForm.value.name == this.user.username &&
-      this.checkoutForm.value.email == this.user.email &&
-      this.checkoutForm.value.password == this.user.password
-      ) {
-        console.log("connecter");
-      } else {
-        console.log("out");
+    
+    this.user.username = this.checkoutForm.value.name;
+    this.user.email = this.checkoutForm.value.email;
+    this.user.password = this.checkoutForm.value.password;
+    this.connect(this.user);
+  }
+
+  connect(user: IUser){
+    this.signinService.connect(user).subscribe(userFound => {
+
+      if(userFound != null){
+        console.log("connecté");
       }
+      else{
+        console.log("Utilisateur inconnu");
+      }
+    });
   }
-
-  connect(user: IUser): Observable<IUser>{
-    return this.httpClient.post<IUser>(`${this.baseURL}`, user);
-  }
-
 }
