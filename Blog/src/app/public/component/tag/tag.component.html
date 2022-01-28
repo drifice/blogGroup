@@ -19,5 +19,6 @@
 
 <div *ngFor =" let tag of tags">
   {{ tag.titre}} -
-  {{ tag.nombreArticle}}
+  {{ tag.nombreArticle}} -
+  <span (click)="deleteTag(tag.id)">Suppimer</span>
 </div>

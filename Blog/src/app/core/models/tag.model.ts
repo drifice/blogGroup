@@ -1,4 +1,5 @@
 export interface ITag {
-    titre :string,
-  nombreArticle :number
+  id: string,
+  titre: string,
+  nombreArticle: number
 }

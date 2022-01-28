@@ -23,8 +23,15 @@ export class TagComponent implements OnInit {
 
   addTag(){
     if(this.checkoutForm.value.titre != '') {
+      const newTag = this.checkoutForm.value as ITag;
+      this.tagService.createTag(newTag).subscribe();
       this.tags.push(this.checkoutForm.value);
     }
     console.log(this.tags)
+  }
+
+  deleteTag(id: string) {
+    this.tagService.deleteTag(id)
+      .subscribe(value => this.tagService.getTags().subscribe(value => this.tags = value));
   }
 }
